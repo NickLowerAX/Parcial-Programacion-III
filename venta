@@ -1,0 +1,10 @@
+# venta.py
+from producto import Producto
+
+class Venta:
+    def __init__(self, producto: Producto, cantidad: int):
+        self.producto = producto
+        self.cantidad = cantidad
+
+    def total(self):
+        return self.producto.precio * self.cantidad

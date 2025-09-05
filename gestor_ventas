@@ -1,0 +1,19 @@
+# gestor_ventas.py
+from venta import Venta
+
+class GestorVentas:
+    def __init__(self):
+        self.ventas = []
+
+    def registrar_venta(self, venta: Venta):
+        self.ventas.append(venta)
+
+    def mostrar_resumen(self):
+        print("\n=== Resumen de Ventas ===")
+        total_general = 0
+        for venta in self.ventas:
+            subtotal = venta.total()
+            print(f"{venta.cantidad} x {venta.producto.nombre} "
+                  f"(${venta.producto.precio:.2f} c/u) = ${subtotal:.2f}")
+            total_general += subtotal
+        print(f"\n💰 Total general: ${total_general:.2f}")

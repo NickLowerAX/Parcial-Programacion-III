@@ -1,0 +1,46 @@
+# Archivo principal: pide datos al usuario, registra ventas y muestra resultados
+from producto import Producto
+from venta import Venta
+from gestor_ventas import GestorVentas
+
+def pedir_float(mensaje):
+    # Valida que el precio sea número
+    while True:
+        try:
+            return float(input(mensaje))
+        except ValueError:
+            print("⚠️ Ingresa un número válido (usa punto decimal).")
+
+def pedir_int(mensaje):
+    # Valida que la cantidad sea entero
+    while True:
+        try:
+            return int(input(mensaje))
+        except ValueError:
+            print("⚠️ Ingresa un entero válido.")
+
+def main():
+    gestor = GestorVentas()
+
+    print("=== Registro de Ventas en el Mercado ===")
+    while True:
+        nombre = input("Nombre del producto: ").strip()
+        precio = pedir_float("Precio unitario: $")
+        cantidad = pedir_int("Cantidad vendida: ")
+
+        producto = Producto(nombre, precio)
+        venta = Venta(producto, cantidad)
+        gestor.registrar_venta(venta)
+
+        continuar = input("¿Desea registrar otra venta? (s/n): ").strip().lower()
+        if continuar != "s":
+            break
+
+    print("\n=== Resultados Finales ===")
+    print(f"Ingreso total del día: ${gestor.ingresos_totales():.2f}")
+
+    criterio = input("¿Desea ordenar por 'ingreso' o 'cantidad'?: ")
+    gestor.mostrar_resumen(criterio)
+
+if __name__ == "__main__":
+    main()
