@@ -2,7 +2,7 @@
 Repositorios de parcial
 
 Nombres: 
-  Noé Isaí Hernández Rivas
+  Noé Isaí Hernández Rivas /
   Eduardo Antorio Fuentes Melara
 
   Preguntas:
